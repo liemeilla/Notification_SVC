@@ -1,6 +1,6 @@
 # Notification Service
 
-This service is a RESTful API intended for sending notification particularly payment notification to the certail url specified by customer. Mainly this service has APIs such as :
+This service is a RESTful API intended for sending notification particularly payment notification to the certain url specified by customer. Mainly this service has APIs such as :
 
 - Generate API Key
 - Register Notification URL
