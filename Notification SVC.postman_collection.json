@@ -1,0 +1,327 @@
+{
+	"info": {
+		"_postman_id": "91f5c4a1-3781-4681-8b56-3c7bc3d52239",
+		"name": "Notification SVC",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Generate API Key",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"customer_id\": 21314,\n\t\"permissions\": [{\n\t\t\"name\": \"notification\",\n\t\t\"action\": \"write\"\n\t}]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:1333/api/authentication/generate-api-key",
+					"host": [
+						"localhost"
+					],
+					"port": "1333",
+					"path": [
+						"api",
+						"authentication",
+						"generate-api-key"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register URL",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "eyJjdXN0b21lcl9pZCI6MjEzMTQsInBlcm1pc3Npb25zIjpbeyJuYW1lIjoibm90aWZpY2F0aW9uIiwiYWN0aW9uIjoid3JpdGUifV19",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"customer_id\": 21314,\n\t\"notification_url\": \"https://webhook.site/#!/2bb88d43-4551-489d-81a8-011d908b61cd/601a3b3f-1dcc-4b8e-9583-fe51b406d607/1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:1333/api/notification/url/register",
+					"host": [
+						"localhost"
+					],
+					"port": "1333",
+					"path": [
+						"api",
+						"notification",
+						"url",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update URL",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "eyJjdXN0b21lcl9pZCI6MjEzMTQsInBlcm1pc3Npb25zIjpbeyJuYW1lIjoibm90aWZpY2F0aW9uIiwiYWN0aW9uIjoid3JpdGUifV19",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"customer_id\": 21314,\n\t\"notification_url\": \"https://webhook.site/2bb88d43-4551-489d-81a8-011d908b61cd\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:1333/api/notification/url/update",
+					"host": [
+						"localhost"
+					],
+					"port": "1333",
+					"path": [
+						"api",
+						"notification",
+						"url",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Activate URL",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "eyJjdXN0b21lcl9pZCI6MjEzMTQsInBlcm1pc3Npb25zIjpbeyJuYW1lIjoibm90aWZpY2F0aW9uIiwiYWN0aW9uIjoid3JpdGUifV19",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"customer_id\": 21314\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:1333/api/notification/url/activate",
+					"host": [
+						"localhost"
+					],
+					"port": "1333",
+					"path": [
+						"api",
+						"notification",
+						"url",
+						"activate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get API Key",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:1333/api/authentication/get-api-key/:cust_id",
+					"host": [
+						"localhost"
+					],
+					"port": "1333",
+					"path": [
+						"api",
+						"authentication",
+						"get-api-key",
+						":cust_id"
+					],
+					"variable": [
+						{
+							"key": "cust_id",
+							"value": "21314"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send Notification",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "eyJjdXN0b21lcl9pZCI6MjEzMTQsInBlcm1pc3Npb25zIjpbeyJuYW1lIjoibm90aWZpY2F0aW9uIiwiYWN0aW9uIjoid3JpdGUifV19",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Idempotency-Key",
+						"value": "{{$guid}}",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"customer_id\": 21314,\n\t\"mode\": \"real\",\n\t\"notification\": {\n\t\t\"reference_id\": \"success_reference_id\",\n\t\t\"transaction_id\": \"392849238\",\n\t\t\"transaction_time\": \"2017-07-21T17:32:28Z\",\n\t\t\"payment_status\": \"success\",\n\t\t\"currency\": \"IDR\",\n\t\t\"amount\": 75000,\n\t\t\"channel_code\": \"SHOPEEPAY\"\n\t}\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:1333/api/notification",
+					"host": [
+						"localhost"
+					],
+					"port": "1333",
+					"path": [
+						"api",
+						"notification"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retry Send Notification",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "eyJjdXN0b21lcl9pZCI6MjEzMTQsInBlcm1pc3Npb25zIjpbeyJuYW1lIjoibm90aWZpY2F0aW9uIiwiYWN0aW9uIjoid3JpdGUifV19",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Idempotency-Key",
+						"value": "63ec5c24-f071-4ef1-ac99-6df0bb4fed7f",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"customer_id\": 21314\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:1333/api/notification/retry",
+					"host": [
+						"localhost"
+					],
+					"port": "1333",
+					"path": [
+						"api",
+						"notification",
+						"retry"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mock Customer Web",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "{{API_KEY}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Idempotency-ID",
+						"value": "9000",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"notification\": {\n\t\t\"reference_id \": \"123\",\n\t\t\"transaction_id \": \"392849238\",\n\t\t\"transaction_time\": \"2017-07-21T17:32:28Z\",\n\t\t\"payment_status\": \"success\",\n\t\t\"currency\": \"IDR\",\n\t\t\"amount\": 150000,\n\t\t\"channel_code\": \"SHOPEEPAY\"\n\t}\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:1333/mock2/receive-notification",
+					"host": [
+						"localhost"
+					],
+					"port": "1333",
+					"path": [
+						"mock2",
+						"receive-notification"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "API_KEY",
+			"value": "eyJjdXN0b21lcl9pZCI6MjEzMTQsInBlcm1pc3Npb25zIjpbeyJuYW1lIjoibm90aWZpY2F0aW9uIiwiYWN0aW9uIjoid3JpdGUifV19"
+		}
+	]
+}
